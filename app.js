@@ -1,5 +1,5 @@
 let listaNumerosSorteados = [];
-let numeroMaximo = 4;
+let numeroMaximo = 100;
 let numeroSecreto = gerarNumeroAleatorio();
 let tentativas = 0;
 
@@ -21,6 +21,7 @@ function verificarChute() {
         exibirTextoNaTela('p', mensagemAposAcertar);
 
         document.getElementById('reiniciar').removeAttribute('disabled');
+        document.getElementById('chutar').setAttribute('disabled', true);
     } else {
         let mensagemTotalTentativas = `\nTentativas: ${tentativas}`
         if (numeroSecreto < numeroChute) {
@@ -50,7 +51,6 @@ function gerarNumeroAleatorio() {
         return gerarNumeroAleatorio();
     } else {
         listaNumerosSorteados.push(numeroGerado);
-        console.log(listaNumerosSorteados);
         return numeroGerado;
     }
 }
@@ -66,4 +66,5 @@ function reiniciarJogo() {
     numeroSecreto = gerarNumeroAleatorio();
     tentativas = 0;
     document.getElementById('reiniciar').setAttribute('disabled', true);
+    document.getElementById('chutar').removeAttribute('disabled');
 }
